@@ -1,6 +1,7 @@
 import business.dao.login.LoginDAO;
 import business.dao.login.LoginDAOImp;
 import business.model.user.UserModel;
+import business.service.login.LoginServiceImp;
 import presentation.DepartmentUI;
 import presentation.EmployeeUI;
 
@@ -16,7 +17,7 @@ public class Main {
     }
 
     public static boolean doLogin(Scanner sc) {
-        LoginDAO loginDAO = new LoginDAOImp();
+        LoginServiceImp loginService = new LoginServiceImp();
         System.out.println("********** ĐĂNG NHẬP **********");
 
         System.out.print("Tên đăng nhập: ");
@@ -29,7 +30,7 @@ public class Main {
         user.setUsername(username);
         user.setPassword(password);
 
-        boolean isLoggedIn = loginDAO.checkLogin(user);
+        boolean isLoggedIn = loginService.checkLogin(user);
         if (isLoggedIn) {
             System.out.println("Đăng nhập thành công!");
         } else {
