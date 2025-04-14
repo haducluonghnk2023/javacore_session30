@@ -1,0 +1,138 @@
+Use case đăng nhập
+- tên : đăng nhập
+- mô tả : hr hoặc admin sử dụng	
+	user name và password đăng nhập hệ thống
+- tác nhân : hr- admin
+- tiền điều kiện: có tài khoản
+- hậu điền kiện : đăng nhập thành công chuyển về trang quản
+	lí nhân viên
+- luồng chính :
+	nhập username + password --> kiểm tra có user trong db hay không
+	có username + password và trạng thái active trong db --> ghi thông tin người dùng
+	chuyển sang trang quản lí
+- luồng phụ :
+	a.username & password không đúng --> thông báo tk không đúng
+	b.trạng thái là inactive --> thông báo tk  không hoạt động
+
+Use case đăng xuất
+- tên : đăng xuất
+- mô tả : người dùng chọn đăng xuất để đăng xuất khỏi hệ thống
+- tác nhân : admin + hr
+- tiền điều kiện : tài khoản đã đăng nhập vào hệ thống
+- hậu điều kiện : chương trình kết thúc
+- luồng chính :
+	chọn đăng xuất --> xóa thông tin người dùng đăng nhập--> kết thúc chương trình
+- luồng phụ :
+
+Use case phân trang
+- tên: danh sách phòng ban có phân trang
+- mô tả : hiển thị danh sách các phòng ban
+- tác nhân : admin - hr
+- tiền điều kiện : đã đăng nhập hệ thống
+- hậu điều kiện : danh sách phòng ban theo trang 
+- luồng chính :
+	chọn danh sách phòng ban --> chọn trang --> hiển thị 5 phòng ban của trang chọn
+- luồng phụ : 
+	chọn vượt quá số trang hiện có --> thông báo lỗi cho người dùng
+
+Use Case: Thêm mới phòng ban
+Tên: Thêm phòng ban mới
+Mô tả: Cho phép thêm một phòng ban
+Tác nhân: Admin / HR
+Tiền điều kiện: Đã đăng nhập
+Hậu điều kiện: Phòng ban mới được lưu
+Luồng chính: nhấn “Thêm phòng ban” --> Nhập thông tin phòng ban --> Xác nhận --> Hệ thống lưu dữ liệu
+Luồng phụ: Thiếu dữ liệu --> cảnh báo nhập đủ --> Tên phòng ban trùng → hiển thị lỗi
+
+Use Case: Cập nhật phòng ban
+Tên: Cập nhật thông tin phòng ban
+Mô tả: Cho phép chỉnh sửa thông tin phòng ban
+Tác nhân: Admin / HR
+Tiền điều kiện: Đã đăng nhập
+Hậu điều kiện: Thông tin được cập nhật
+Luồng chính: Chọn phòng ban --> Chỉnh sửa thông tin --> Nhấn “Lưu” --> Cập nhật thành công
+Luồng phụ:Không chọn phòng ban --> cảnh báo -- >Dữ liệu không hợp lệ --> thông báo lỗi
+
+Use Case: Xóa phòng ban
+Tên: Xóa phòng ban
+Mô tả: Xóa phòng ban không có nhân viên
+Tác nhân: Admin
+Tiền điều kiện: Phòng ban chưa có nhân viên
+Hậu điều kiện: Phòng ban bị xóa
+Luồng chính: Chọn phòng ban --> Nhấn "Xóa" --> Hệ thống kiểm tra --> không có nhân viên --> Xóa thành công
+Luồng phụ: Có nhân viên --> không cho xóa
+
+Use Case: Tìm kiếm phòng ban
+Tên: Tìm kiếm phòng ban theo tên
+Mô tả: Cho phép tìm kiếm phòng ban theo tên
+Tác nhân: Admin / HR
+Tiền điều kiện: Đã đăng nhập
+Hậu điều kiện: Hiển thị danh sách kết quả phù hợp
+Luồng chính: Nhập tên phòng ban --> Nhấn tìm kiếm --> Hiển thị kết quả
+Luồng phụ: Không có kết quả --> thông báo “Không tìm thấy”
+
+Use Case: Danh sách nhân viên có phân trang
+Tên: Hiển thị danh sách nhân viên
+Mô tả: Hiển thị danh sách nhân viên theo từng trang (10 nhân viên/trang)
+Tác nhân: Admin / HR
+Tiền điều kiện: Đã đăng nhập
+Hậu điều kiện: Danh sách được hiển thị đúng
+Luồng chính: Truy cập danh sách nhân viên --> Chọn trang --> Hiển thị 10 nhân viên
+	
+Use Case: Thêm nhân viên
+Tên: Thêm nhân viên mới
+Mô tả: Thêm nhân viên vào phòng ban đang hoạt động
+Tác nhân: Admin / HR
+Tiền điều kiện: Phòng ban hoạt động
+Hậu điều kiện: Nhân viên mới được thêm
+Luồng chính: Nhấn “Thêm nhân viên” --> Nhập thông tin --> Chọn phòng ban -->Lưu nhân viên
+Luồng phụ: Phòng ban không hoạt động --> không cho phép thêm --> Dữ liệu không hợp lệ --> thông báo	
+	
+Use Case: Cập nhật nhân viên
+Tên: Cập nhật thông tin nhân viên
+Mô tả: Cho phép chỉnh sửa thông tin nhân viên
+Tác nhân: Admin / HR
+Tiền điều kiện: Nhân viên tồn tại
+Hậu điều kiện: Nhân viên được cập nhật
+
+Use Case: Xóa nhân viên
+Tên: Xóa nhân viên
+Mô tả: Cập nhật trạng thái nhân viên thành INACTIVE
+Tác nhân: Admin
+Tiền điều kiện: Nhân viên tồn tại
+Hậu điều kiện: Trạng thái nhân viên thành INACTIVE
+
+Use Case: Tìm kiếm nhân viên
+Tên: Tìm kiếm nhân viên theo tên hoặc khoảng tuổi
+Mô tả: Tìm kiếm nhân viên theo từ khóa hoặc tuổi
+Tác nhân: Admin / HR
+Tiền điều kiện: Nhân viên đã được thêm
+Hậu điều kiện: Hiển thị danh sách phù hợp
+
+Use Case: Sắp xếp nhân viên
+Tên: Sắp xếp nhân viên
+Mô tả: Sắp xếp nhân viên theo lương (giảm dần) hoặc tên (tăng dần)
+Tác nhân: Admin / HR
+Tiền điều kiện: Có danh sách nhân viên
+Hậu điều kiện: Danh sách được sắp xếp
+
+Use Case: Thống kê nhân viên theo phòng ban
+Tên: Thống kê số lượng nhân viên theo từng phòng ban
+Mô tả: Hiển thị số nhân viên của từng phòng ban
+Tác nhân: Admin
+Hậu điều kiện: Thống kê hiển thị thành công
+
+Use Case: Tổng số nhân viên toàn hệ thống
+Tên: Thống kê tổng nhân viên
+Mô tả: Hiển thị tổng nhân viên trong hệ thống
+Tác nhân: Admin
+
+Use Case: Phòng ban có nhiều nhân viên nhất
+Tên: Thống kê phòng ban đông nhất
+Mô tả: Tìm phòng ban có nhiều nhân viên nhất
+Tác nhân: Admin
+
+Use Case: Phòng ban có lương cao nhất
+Tên: Thống kê phòng ban có lương cao nhất
+Mô tả: Tính trung bình lương và tìm phòng ban cao nhất
+Tác nhân: Admin
